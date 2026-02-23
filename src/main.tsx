@@ -8,9 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 
-// Import PatternFly and Keycloak admin UI styles
 import App from "./App.tsx";
-import { KeycloakProvider } from "@keycloak/keycloak-admin-ui";
+import { MockProvider } from "./mock-providers.tsx";
 
 // Initialize i18n
 i18n.use(initReactI18next).init({
@@ -73,6 +72,8 @@ i18n.use(initReactI18next).init({
         defaultLocale: "Default locale",
         defaultLocaleHelp: "The default locale for this realm",
         spinnerLoading: "Loading...",
+        unknownUser: "Anonymous",
+        themePreviewInfo: "In order to preview the theme colors, the current theme needs to be set to the one you want to preview, so we have automatically switched you to the one you want to preview.",
       },
     },
   },
@@ -85,17 +86,9 @@ i18n.use(initReactI18next).init({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <KeycloakProvider environment={{
-        adminBaseUrl: "http://localhost:8080",
-        resourceUrl: "http://localhost:8080",
-        logo: "",
-        logoUrl: "",
-        serverBaseUrl: "http://localhost:8080",
-        realm: "master",
-        clientId: "quicktheme"
-      }}>
+      <MockProvider>
         <App />
-      </KeycloakProvider>
+      </MockProvider>
     </BrowserRouter>
   </StrictMode>
 );
