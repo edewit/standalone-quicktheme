@@ -1,6 +1,5 @@
+import "@patternfly/patternfly/patternfly.css";
 import "@patternfly/patternfly/patternfly-addons.css";
-import "@patternfly/react-core/dist/styles/base.css";
-import "@keycloak/keycloak-admin-ui/styles.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -23,8 +22,14 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       master: {
-        themeColorInfo: "Here you can set the patternfly color variables and create a \"theme jar\" file that you can download and put in your providers folder to apply the theme to your realm.",
+        adminConsolePreview: "Admin console preview",
+        continue: "Continue",
+        cancel: "Cancel",
+        themeColorInfo:
+          'Here you can set the patternfly color variables and create a "theme jar" file that you can download and put in your providers folder to apply the theme to your realm.',
         themes: "Themes",
+        themeName: "Theme name",
+        fileName: "File name",
         quickTheme: "Quick Theme",
         themeMode: "Theme mode",
         lightMode: "Light mode",
@@ -34,6 +39,7 @@ i18n.use(initReactI18next).init({
         backgroundImage: "Background image",
         downloadThemeJar: "Download theme jar",
         font: "Font",
+        fileNameDialogTitle: "Save as",
         errorColor: "Error color",
         successColor: "Success color",
         activeColor: "Active color",
@@ -42,12 +48,18 @@ i18n.use(initReactI18next).init({
         secondaryColor: "Secondary color",
         linkColor: "Link color",
         linkColorHover: "Link color hover",
+        loginPagePreview: "Login page preview",
+        logoWidth: "Logo width",
+        logoHeight: "Logo height",
         backgroundColor: "Background color",
         backgroundColorAccent: "Background color accent",
         backgroundColorNav: "Background color nav",
         backgroundColorHeader: "Background color header",
         iconColor: "Icon color",
         textColor: "Text color",
+        themeDescription: "Theme description",
+        themeDescriptionDefault:
+          "Custom theme created by the Quick theme tool.",
         lightTextColor: "Light text color",
         inputBackgroundColor: "Input background color",
         inputTextColor: "Input text color",
@@ -66,21 +78,23 @@ i18n.use(initReactI18next).init({
         adminConsoleTheme: "Admin console theme",
         emailTheme: "Email theme",
         internationalization: "Internationalization",
-        internationalizationHelp: "Enable/disable internationalization for your realm",
+        internationalizationHelp:
+          "Enable/disable internationalization for your realm",
         supportedLocales: "Supported locales",
         supportedLocalesHelp: "Locales that are supported in this realm",
         defaultLocale: "Default locale",
         defaultLocaleHelp: "The default locale for this realm",
         spinnerLoading: "Loading...",
         unknownUser: "Anonymous",
-        themePreviewInfo: "In order to preview the theme colors, the current theme needs to be set to the one you want to preview, so we have automatically switched you to the one you want to preview.",
+        themePreviewInfo:
+          "In order to preview the theme colors, the current theme needs to be set to the one you want to preview, so we have automatically switched you to the one you want to preview.",
       },
     },
   },
   saveMissing: true,
   missingKeyHandler: function (lngs, ns, key) {
     console.log("Missing translation:", lngs, ns, key);
-  }
+  },
 });
 
 createRoot(document.getElementById("root")!).render(
@@ -90,5 +104,5 @@ createRoot(document.getElementById("root")!).render(
         <App />
       </MockProvider>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import type RealmRepresentation from "../../keycloak/js/libs/keycloak-admin-client/lib/defs/realmRepresentation";
-import { 
+import {
   KeycloakProvider,
   AccessContext,
   WhoAmIContext,
@@ -42,6 +42,7 @@ const createMockKeycloak = (): any => ({
 const mockEnvironment = {
   adminBaseUrl: "",
   resourceUrl: "",
+  resourceVersion: "..",
   logo: "",
   logoUrl: "",
   serverBaseUrl: "",
@@ -108,7 +109,10 @@ export const MockAppContexts = ({ children }: PropsWithChildren) => {
 // Top-level provider (wraps KeycloakProvider with mock keycloak)
 export const MockProvider = ({ children }: PropsWithChildren) => {
   return (
-    <KeycloakProvider environment={mockEnvironment} keycloak={createMockKeycloak()}>
+    <KeycloakProvider
+      environment={mockEnvironment}
+      keycloak={createMockKeycloak()}
+    >
       {children}
     </KeycloakProvider>
   );
